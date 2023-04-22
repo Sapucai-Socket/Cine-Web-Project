@@ -114,46 +114,9 @@
                     </div>
                 </div>
             </div>
-        
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col">
-                            <a href="#">Sobre</a>
-                        </div>
-                        <div class="footer-col">
-                            <a href="#">Notícias</a>
-                        </div>
-                        <div class="footer-col">
-                            <a href="#">Pro</a>
-                        </div>
-                        <div class="footer-col">
-                            <a href="#">Retro</a>
-                        </div>
-                        <div class="footer-col">
-                            <a href="#">Ajuda</a>
-                        </div>
-                        <div class="footer-col">
-                            <a href="#">Contato</a>
-                        </div>
-
-                        <div class="footer-col">
-                            <div class="social-links ">
-                                <li>
-                                    <a href="#"><i class="fab fa-youtube"></i></a>
-                                    <a href="https://github.com/sapucaisocket"><i class="fab fa-github"></i></a>
-                                    <li>
-                                        <h5>Desenvolvido por:</h5>
-                                        <img src="images/Sapucaí_Logo.png" alt="" href="">
-                                    </li>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="copy">© Ciné. Feito por uma equipe de estudantes. Informações sobre os filmes providenciadas pela TMDb.</h4>
-                </div>
-            </footer>
-
+            
+            <%- include('./footer.ejs'); %>
+            
             <script type="text/javascript">
                 var counter = 1;
                 setInterval(function() {
@@ -167,6 +130,15 @@
                 }, 5000)
             </script>
             <script>
+                var express = require("express");
+                var path = require('path');
+                
+                const app = express();
+                const admin = require("./routes/admin")
+
+                app.set('views', path.join(__dirname, 'views'));
+                app.set('view engine', 'ejs');
+
                 const apiKey = '8ab7728e'
                 const frmPesquisa = document.querySelector("form")
                 //const frmPesquisa = document.querySelector('#search\\:box')
@@ -202,6 +174,7 @@
                     `
 
                     items.innerHTML = ""
+
                     lista.appendChild(items)
 
                     json.Search.forEach(element => {

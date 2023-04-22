@@ -8,6 +8,7 @@ var fazLoginRouter = require('./routes/fazLogin'); // fazLogin module
 var registroRouter = require('./routes/registro'); // registro module
 var fazRegistroRouter = require('./routes/fazRegistro'); // fazRegistro module
 
+
 const app = express();
 const admin = require("./routes/admin")
 
@@ -24,6 +25,7 @@ app.use('/login', loginRouter);
 app.use('/fazLogin', fazLoginRouter); // fazLogin handler
 app.use('/registro', registroRouter); // registro handler
 app.use('/fazRegistro', fazRegistroRouter); // fazLogin handler
+
 
 //Porta do local host do projeto
 app.listen(8081, function() {

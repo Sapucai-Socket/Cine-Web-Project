@@ -276,14 +276,21 @@ input[type="checkbox"]{
 .footer-col a{ 
     text-decoration: none;
     font-size: 18px;
-    color: #f2efea;
+    color: #c3c2bf;
     text-transform: capitalize;
     margin-bottom: 30px;
     font-weight: 10;
     position: relative;
 }
-
-.footer-col .social-links a {
+.footer-col a:hover{
+    color: #f2efea;
+    transition: 0.2s;
+}
+.footer-dev li{
+    list-style: none;
+}
+.footer-dev .social-links a {
+    text-decoration: none;
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -291,27 +298,31 @@ input[type="checkbox"]{
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
-    color: white;
+    color: #f2efea;
     transition: all 0.3s ease;
 }
-.footer-col .social-links a:hover {
+.footer-dev .social-links a:hover {
     color: #24262b;
-    background-color: white;
-}
-.footer-col .social-links img {
-    width: 100px;
+    background-color: #f2efea;
 }
 .footer-col .social-links li{
     display:list-item;
     list-style: none;
 }
-.footer-col .social-links li h5{
-    color: #f2efea;
-}
 .copy {
     color:#777
 }
-
+.devBy {
+    display: flex;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    color: #f2efea;
+}
+.devBy img{
+    height: 70px;
+    width: 80px;
+}
 .option{
     vertical-align: middle;
 }
