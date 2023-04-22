@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Homepage</title>
+        <title>Ciné</title>
         <link rel="stylesheet" href="css/homepage.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+        <link rel="shortcut icon" href="images/cine_icon.png" type="image/x-icon">
     </head>
     <body>
         <!--
@@ -130,14 +130,6 @@
                 }, 5000)
             </script>
             <script>
-                var express = require("express");
-                var path = require('path');
-                
-                const app = express();
-                const admin = require("./routes/admin")
-
-                app.set('views', path.join(__dirname, 'views'));
-                app.set('view engine', 'ejs');
 
                 const apiKey = '8ab7728e'
                 const frmPesquisa = document.querySelector("form")
@@ -174,7 +166,6 @@
                     `
 
                     items.innerHTML = ""
-
                     lista.appendChild(items)
 
                     json.Search.forEach(element => {

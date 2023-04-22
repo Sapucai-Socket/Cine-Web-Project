@@ -373,7 +373,7 @@ input[type="checkbox"]{
 }
 
 .m-btn {
-    border: 2px solid #23e3c2;
+    border: 2px solid #557373;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -385,7 +385,7 @@ input[type="checkbox"]{
 }
 
 .m-btn:hover {
-    background-color: #23e3c2;
+    background-color:  #557373;
 }
 
 #radio1:checked ~.first {
@@ -410,7 +410,7 @@ input[type="checkbox"]{
 }
 
 .nav-auto div {
-    border: 2px solid #23e3c2;
+    border: 2px solid  #557373;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
@@ -422,16 +422,16 @@ input[type="checkbox"]{
 }
 
 #radio1:checked ~ .nav-auto .a-b1 {
-    background-color: #23e3c2;
+    background-color:  #557373;
 }
 #radio2:checked ~ .nav-auto .a-b2 {
-    background-color: #23e3c2;
+    background-color:  #557373;
 }
 #radio3:checked ~ .nav-auto .a-b3 {
-    background-color: #23e3c2;
+    background-color:  #557373;
 }
 #radio4:checked ~ .nav-auto .a-b4 {
-    background-color: #23e3c2;
+    background-color:  #557373;
 }
 
 /*lista filmes*/
