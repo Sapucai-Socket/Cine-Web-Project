@@ -93,13 +93,23 @@ nav ol li a{
     color: #f2efea;
     text-decoration: none;
     text-transform: capitalize;
+    text-align: center;
 }
 
 nav ol li:hover{
     transition: 0.2s;
     background: #1c1c1c;
-    border-radius: 50px;
+    border-radius: 7px;
 }
+
+/*Imagem Logado*/
+nav ol li a img{
+   width: 40px;
+   border-radius: 40px;
+   text-align: center;
+}
+
+
 
 /*Barra de busca*/
 nav .box{
@@ -114,11 +124,11 @@ nav .box input{
     outline: none;
     background: #f2efea;
     height: 100%;
-    padding: 0 10px;
+    padding: 10px;
     font-size: 15px;
     width: 300px;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
 }
 
 nav .box button{
@@ -130,8 +140,8 @@ nav .box button{
     position: relative;
     cursor: pointer;
     z-index: 1;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+   border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
     border: none;
 }
 
@@ -149,8 +159,8 @@ nav .box button::after{
     right: 0;
     z-index: -1;
     transition: 0.3s;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 nav .box button:hover::after{

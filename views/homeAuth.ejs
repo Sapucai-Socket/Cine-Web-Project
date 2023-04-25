@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ciné</title>
+        <link rel="stylesheet" href="css/homepage.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="shortcut icon" href="images/cine_icon.png" type="image/x-icon">
+    </head>
+    <body>
+        <!--
+        <div class="header">
+            <ul class="header-list">
+                <img src="images/cine.png" alt="" class="cine-logo">
+                <li>
+                    <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    <ul class="dropdown">
+                        <li><a href="#"><i class="fa fa-film" aria-hidden="true"></i> Filmes</a></li>
+                        <li><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Reviews</a></li>
+                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> Para ver</a></li>
+                        <li><a href="login"><i class="fa fa-user" aria-hidden="true"></i> Perfil</a></li>
+                    </ul>
+                    <form>
+                        <div class="box">
+                        <input id="pesquisa" placeholder="Busque filmes, séries, reviews ou pessoas...">
+                        <button>Pesquisar</button>
+                        </div>
+                    </form>
+                    
+                </li>
+            </ul>
+        </div>
+        -->
+        <%- include('./headerAuth.ejs'); %>
+
+        <div class="wrapper-content">
+
+            <section class="section" id="slide">
+                <div class="slider">
+                    <div class="slide">
+                        <input type="radio" name="radio-btn" id="radio1">
+                        <input type="radio" name="radio-btn" id="radio2">
+                        <input type="radio" name="radio-btn" id="radio3">
+                        <input type="radio" name="radio-btn" id="radio4">
+    
+                        <div class="st first">
+                            <img src="https://www.themoviedb.org/t/p/original/lWqjXgut48IK5f5IRbDBAoO2Epp.jpg" alt="">
+                        </div>
+    
+                        <div class="st">
+                            <img src="https://www.themoviedb.org/t/p/original/74q0L86HV4ifAO0rSRD64iWhVVH.jpg" alt="">
+                        </div>
+    
+                        <div class="st">
+                            <img src="https://www.themoviedb.org/t/p/original/yn5EKKduBiDZXNQ0Mx8VyrxOaZf.jpg" alt="">
+                        </div>
+    
+    
+                        <div class="nav-auto">
+                            <div class="a-b1"></div>
+                            <div class="a-b2"></div>
+                            <div class="a-b3"></div>
+                            <div class="a-b4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-m">
+                        <label for="radio1" class="m-btn"></label>
+                        <label for="radio1" class="m-btn"></label>
+                        <label for="radio1" class="m-btn"></label>
+                        <label for="radio1" class="m-btn"></label>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="lista">
+                    <div class="title">
+                        <h4>Filmes mais Populares</h4>
+                        <a href="#">Ver Lista</a>
+                    </div>
+                    <hr>
+                    <div class="items">
+                        <div class="item">
+                            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3ba32041615387.57acc4bf0b15f.jpg" />
+                            <h2>Moonlight</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://m.media-amazon.com/images/I/8109aqJrEjL.jpg" />
+                            <h2>Mindsommar</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://i.etsystatic.com/18242346/r/il/c6d0c3/4386841855/il_fullxfull.4386841855_b5tl.jpg" />
+                            <h2>Tár</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://img.elo7.com.br/product/original/264E930/big-poster-filme-blade-runner-1982-lo001-tamanho-90x60-cm-poster.jpg" />
+                            <h2>Blade Runner</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://i.etsystatic.com/21145079/r/il/3436ee/3413278188/il_570xN.3413278188_t5qu.jpg" />
+                            <h2>Marriage Story</h2>
+                        </div>
+                        
+                        <div class="item">
+                            <img src="https://m.media-amazon.com/images/I/91jrKX9xjQL.jpg" />
+                            <h2>La La Land</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <%- include('./footer.ejs'); %>
+            
+            <script type="text/javascript">
+
+            </script>
+            <script type="text/javascript">
+                var counter = 1;
+                setInterval(function() {
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++
+
+                    if(counter > 4) {
+                        counter = 1;
+
+                    }
+                }, 5000)
+            </script>
+            <script>
+
+                const apiKey = '8ab7728e'
+                const frmPesquisa = document.querySelector("form")
+                //const frmPesquisa = document.querySelector('#search\\:box')
+
+                frmPesquisa.onsubmit = (ev) => {
+                    ev.preventDefault();
+
+                    const pesquisa = ev.target.pesquisa.value;
+
+                    if(pesquisa == "") {
+                        alert("preencha o campo");
+                        return;
+                    }
+                    fetch(`https://www.omdbapi.com/?s=${pesquisa}&apikey=${apiKey}`)
+                        .then(result => result.json())
+                        .then(json => carregaLista(json))
+                }
+
+
+                const carregaLista = (json) => {
+                    const section = document.querySelector('#slide')
+                    section.innerHTML = '<style> .section{display:none;} </style>'
+
+                    const lista = document.querySelector('div.lista')
+                    const items = document.querySelector('div.items')
+                    const pesquisaInput = document.querySelector('#pesquisa')
+                    const pesquisaValue = pesquisaInput.value
+
+                    lista.innerHTML = `
+                    <div class="title">
+                        <h4>Esses são os resultados para "${pesquisaValue}"</h4>
+                    </div>
+                    `
+
+                    items.innerHTML = ""
+                    lista.appendChild(items)
+
+                    json.Search.forEach(element => {
+                        console.log(element)
+
+                        let item = document.createElement("div")
+                        item.classList.add("item")
+
+                        item.innerHTML = `<img src="${element.Poster}" /><h2>${element.Title}</h2>`
+
+                        items.appendChild(item)
+                    })
+
+                }
+            </script>
+        
+    </body>
+</html>

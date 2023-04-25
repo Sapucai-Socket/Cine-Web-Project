@@ -38,7 +38,7 @@ router.post('/', function (req, res, next) {
 		if (nameExists) {
 			if (foundPerson) {
 				console.log("Você entrou!");
-				res.redirect('/');
+				res.redirect('/Auth');
 				lsUsuarios = []
 				//console.log("Found the person:", foundPerson);
 			} else {
