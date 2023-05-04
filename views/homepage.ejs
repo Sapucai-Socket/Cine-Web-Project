@@ -56,7 +56,7 @@
                         <div class="st">
                             <img src="https://www.themoviedb.org/t/p/original/yn5EKKduBiDZXNQ0Mx8VyrxOaZf.jpg" alt="">
                         </div>
-    
+                        
     
                         <div class="nav-auto">
                             <div class="a-b1"></div>
@@ -113,7 +113,48 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                
+                <div class="lista">
+                    <div class="title">
+                        <h4>Vencedores do Oscar 2023</h4>
+                        <a href="#">Ver Lista</a>
+                    </div>
+                    <hr>
+                    <div class="items">
+                        <div class="item">
+                            <img src="https://cdn.posteritati.com/posters/000/000/068/206/everything-everywhere-all-at-once-md-web.jpg" />
+                            <h2>Everything Everywhere All At Once</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://i0.wp.com/cinemaeafins.com.br/wp-content/uploads/2022/11/The-Whale-poster.jpg" />
+                            <h2>The Whale</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://kbimages1-a.akamaihd.net/d5420a11-b841-41a5-98c1-5cd427683e3a/1200/1200/False/women-talking-1.jpg" />
+                            <h2>Women Talking</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMzM4ZDJhYjYtZGY5Ny00NTk0LWI4ZTYtNjczZDFiMGI2ZjEzXkEyXkFqcGdeQXVyNjc5NjEzNA@@._V1_FMjpg_UX1000_.jpg" />
+                            <h2>All Quiet On The Western Front</h2>
+                        </div>
+    
+                        <div class="item">
+                            <img src="https://lumiere-a.akamaihd.net/v1/images/poster-avatar-2-bra_96b8c77c.png" />
+                            <h2>Avatar: The Way of Water</h2>
+                        </div>
+                        
+                        <div class="item">
+                            <img src="https://pbs.twimg.com/media/FYrbuBEX0AAHGkX.jpg:large" />
+                            <h2>Guillermo Del Toro's Pinocchio</h2>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+            
             
             <%- include('./footer.ejs'); %>
             
@@ -146,11 +187,11 @@
                     }
                     fetch(`https://www.omdbapi.com/?s=${pesquisa}&apikey=${apiKey}`)
                         .then(result => result.json())
-                        .then(json => carregaLista(json))
+                        .then(json => carregaListaPesq(json))
                 }
 
 
-                const carregaLista = (json) => {
+                const carregaListaPesq = (json) => {
                     const section = document.querySelector('#slide')
                     section.innerHTML = '<style> .section{display:none;} </style>'
 
@@ -181,6 +222,5 @@
 
                 }
             </script>
-        
     </body>
 </html>

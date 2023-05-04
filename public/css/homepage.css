@@ -105,10 +105,10 @@ nav ol li:hover{
 /*Imagem Logado*/
 nav ol li a img{
    width: 40px;
-   border-radius: 40px;
-   text-align: center;
-}
+   border-radius: 7px;
+   justify-content: center;
 
+}
 
 
 /*Barra de busca*/
@@ -507,6 +507,10 @@ ul {
     border: none;
     text-decoration: none;
     font-size: 13px;
+}
+
+.lista .title a:hover{
+    color: #504f4f;
 }
 
 .lista .items h5{
