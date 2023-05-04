@@ -34,7 +34,7 @@ router.post('/', function (req, res, next) {
 
 		const nameExists = lsUsuarios.some(person => person.email === nameToCheck);
 		const foundPerson = lsUsuarios.find(person => person.email === targetPerson.email && person.senha === targetPerson.senha);
-		
+
 		if (nameExists) {
 			if (foundPerson) {
 				console.log("Você entrou!");
@@ -42,8 +42,9 @@ router.post('/', function (req, res, next) {
 				lsUsuarios = []
 				//console.log("Found the person:", foundPerson);
 			} else {
-				console.log("Você não entrou!");
-				res.redirect('/login');
+				var string = encodeURIComponent('no');
+  				res.redirect('login?valid=' + string);
+				//res.redirect('/login');
 				lsUsuarios = []
 				//console.log("Could not find the person.");
 			}
