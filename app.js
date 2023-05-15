@@ -28,6 +28,6 @@ app.use('/fazRegistro', fazRegistroRouter); // fazLogin handler
 
 
 //Porta do local host do projeto
-app.listen(8081, function() {
+app.listen(8081, function () {
     console.log("SERVIDOR RODANDO NA PORTA http://localhost:8081");
 });
