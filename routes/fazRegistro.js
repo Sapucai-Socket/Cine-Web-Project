@@ -1,38 +1,30 @@
 var express = require('express');
 var router = express.Router();
+const {
+    getAuth,
+    createUserWithEmailAndPassword
+} = require('firebase/auth');
 
-var admin = require("firebase-admin");
-const db = admin.firestore(); // Referência do DB
-let col = db.collection("Users"); // Referência da coleção de usuários
-
-var usuarios = [];
-
-/* POST registro. */
-
-router.post('/', function (req, res, next) {
-    const { usuario, senha } = req.body;
-
-    col.get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            usuarios.push(data.email);
-        });
-        if (usuarios.includes(usuario)) {
-            res.redirect('/registro')
-            usuarios = [];
+router.post('/', function (req, res) {
+    const {
+        usuario,
+        senha
+    } = req.body;
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, usuario, senha)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        res.send(`Sucesso! Bem-vindo ao Ciné, ${user.email}.<br>Por favor, faça login.`);
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode == 'auth/email-already-in-use') {
+            res.send('E-mail já registrado');
+        } else if (errorCode == 'auth/weak-password') {
+            res.send('Sua senha deve conter no mínimo 6 caracteres');
         } else {
-            db.collection("Users").doc(usuario).set({
-                email: usuario,
-                senha: senha,
-            })
-                .then(() => {
-                    console.log("Usuário registrado! Por favor, faça login.");
-                    res.redirect('/login')
-                })
-                .catch((error) => {
-                    console.error("Não foi possível concluir o registro por conta do seguinte erro: ", error);
-                });
-            usuarios = [];
+            res.send(`${errorCode}<br>${errorMessage}`)
         }
     });
 });

@@ -1,59 +1,44 @@
 var express = require('express');
 var router = express.Router();
+const {
+    getAuth,
+    signInWithEmailAndPassword
+} = require('firebase/auth');
 
-var admin = require("firebase-admin");
+router.post('/', function (req, res) {
+    const {
+        usuario,
+        senha
+    } = req.body;
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, usuario, senha)
+    .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        // res.send(`Sucesso! Bem-vindo novamente ao Ciné, ${user.email}.`);
+		console.log(`Sucesso! Bem-vindo novamente ao Ciné, ${user.email}.`);
+		res.redirect('/Auth');
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode == 'auth/user-not-found') {
 
-var serviceAccount = require("../serviceAccountKey.json");
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL: "https://login-study-975a8-default-rtdb.firebaseio.com"
-});
-
-const db = admin.firestore(); // Referência do DB
-
-let usersRef = db.collection("Users"); // Referência da coleção de usuários
-
-var lsUsuarios = [];
-
-/* POST login. */
-
-router.post('/', function (req, res, next) {
-	const { usuario, senha } = req.body;
-
-	usersRef.get().then((querySnapshot) => {
-
-		querySnapshot.forEach((doc) => {
-			const data = doc.data();
-			lsUsuarios.push({ email: data.email, senha: data.senha });
-		});
-
-		const targetPerson = { email: usuario, senha: senha };
-		const nameToCheck = usuario;
-		console.log(lsUsuarios);
-
-		const nameExists = lsUsuarios.some(person => person.email === nameToCheck);
-		const foundPerson = lsUsuarios.find(person => person.email === targetPerson.email && person.senha === targetPerson.senha);
-
-		if (nameExists) {
-			if (foundPerson) {
-				console.log("Você entrou!");
-				res.redirect('/Auth');
-				lsUsuarios = []
-				//console.log("Found the person:", foundPerson);
-			} else {
-				var string = encodeURIComponent('no');
-  				res.redirect('login?valid=' + string);
-				//res.redirect('/login');
-				lsUsuarios = []
-				//console.log("Could not find the person.");
-			}
-		} else {
-			res.redirect('/registro');
-			lsUsuarios = []
-			console.log(`Usuário '${nameToCheck}' não existe. Venha para o Ciné!`);
-		}
-	})
+            //res.send('Usuário não encontrado');
+            var string = encodeURIComponent('auth/user-not-found');
+            res.redirect('login?valid=' + string);
+        } else if (errorCode == 'auth/wrong-password') {
+            // res.send('Senha incorreta');
+            var string = encodeURIComponent('auth/wrong-password');
+            res.redirect('login?valid=' + string);
+        } else {
+            var string = encodeURIComponent('unknownError');
+            res.redirect('login?valid=' + string);
+            console.log(`${errorCode}\n${errorMessage}`)
+        }
+        // res.send(`${errorCode}<br>${errorMessage}`)
+    });
 });
 
 module.exports = router;

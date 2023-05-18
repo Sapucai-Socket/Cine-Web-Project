@@ -8,6 +8,7 @@ var fazLoginRouter = require('./routes/fazLogin'); // fazLogin module
 var registroRouter = require('./routes/registro'); // registro module
 var fazRegistroRouter = require('./routes/fazRegistro'); // fazRegistro module
 
+var firebase = require('./firebase'); // ref. firebase
 
 const app = express();
 const admin = require("./routes/admin")
